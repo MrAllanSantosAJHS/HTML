@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KickRush — Bad Website Layout Example</title>
+  <style>
+    /* INTENTIONALLY BAD DESIGN FOR A CLASSROOM DEMONSTRATION.
+       This page uses poor contrast, clutter, inconsistent styles, and confusing navigation. */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      background: #f7e9ff;
+      color: #ff1493;
+      cursor: default;
+    }
+    .announcement {
+      background: #ff5a00;
+      color: #ff4fd8;
+      text-align: center;
+      padding: 9px 5px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px #ff8cff;
+      border-bottom: 8px dotted #00ff4c;
+      animation: jitter 1.4s infinite;
+    }
+    @keyframes jitter {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(2px); }
+      75% { transform: translateX(-2px); }
+    }
+    header {
+      padding: 10px 4%;
+      background: repeating-linear-gradient(45deg, #ff00a8 0 15px, #ffe600 15px 30px, #00e5ff 30px 45px);
+      border-bottom: 10px ridge #7d00ff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      color: #00ff2a;
+      font-size: clamp(24px, 4vw, 46px);
+      font-weight: 1000;
+      text-shadow: 4px 3px #ff0000, -2px -2px #6b00ff;
+      transform: rotate(-4deg);
+      white-space: nowrap;
+    }
+    nav { display: flex; flex-wrap: wrap; gap: 7px; }
+    nav a {
+      display: inline-block;
+      padding: 11px 9px;
+      color: #ffff00;
+      background: #ff00a8;
+      border: 4px outset #00fffb;
+      border-radius: 0;
+      text-decoration: underline wavy;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    nav a:nth-child(2) { background: #00c853; color: #ff00ff; border-style: dashed; transform: rotate(3deg); }
+    nav a:nth-child(3) { background: #5200ff; color: #00ffff; border-style: double; transform: rotate(-5deg); }
+    .hero {
+      min-height: 300px;
+      margin: 13px;
+      padding: 22px 5%;
+      background:
+        radial-gradient(circle at 15% 20%, #ff00cc 0 8%, transparent 9%),
+        repeating-linear-gradient(-25deg, #ffec00 0 20px, #ff8a00 20px 40px, #00e5ff 40px 60px);
+      border: 8px dotted #ff00a8;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 15px;
+      align-items: center;
+    }
+    .hero h1 {
+      color: #ff00d4;
+      font-size: clamp(31px, 5vw, 65px);
+      line-height: .92;
+      margin: 0 0 16px;
+      text-shadow: 3px 3px #00ff00;
+      transform: rotate(-2deg);
+    }
+    .hero p {
+      color: #ff0088;
+      background: #00f7ff;
+      padding: 8px;
+      font-size: 17px;
+      font-weight: bold;
+      border: 3px dashed #ff0000;
+    }
+    .hero-art {
+      min-height: 180px;
+      display: grid;
+      place-items: center;
+      background: repeating-conic-gradient(#ff00b7 0 10deg, #ffec00 10deg 20deg, #00eeff 20deg 30deg);
+      border: 8px groove #00ff00;
+      transform: rotate(2deg);
+      padding: 12px;
+    }
+    .shoe {
+      font-size: clamp(74px, 12vw, 150px);
+      filter: drop-shadow(8px 8px 0 #ff0000);
+      transform: rotate(-20deg);
+    }
+    .hero-art small {
+      display: block;
+      color: #4a0066;
+      background: #fff000;
+      padding: 5px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .random-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      padding: 12px;
+    }
+    .random-badges span {
+      padding: 9px 13px;
+      color: #fff;
+      background: #ff00a8;
+      border: 3px solid #00ff00;
+      font-weight: 900;
+      transform: rotate(var(--angle, 0deg));
+    }
+    .random-badges span:nth-child(2) { --angle: 7deg; background: #00c853; color: #ff00ff; }
+    .random-badges span:nth-child(3) { --angle: -6deg; background: #5200ff; color: #00ffff; }
+    .random-badges span:nth-child(4) { --angle: 4deg; background: #ffec00; color: #ff0000; }
+    .products {
+      padding: 8px 3% 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+    .product {
+      padding: 12px;
+      min-height: 185px;
+      border: 6px dotted #ff00a8;
+      background: linear-gradient(135deg, #00f7ff, #ffec00, #ff00a8);
+      text-align: center;
+      transform: rotate(var(--tilt, 0deg));
+    }
+    .product:nth-child(2) { --tilt: 2deg; border-style: dashed; }
+    .product:nth-child(3) { --tilt: -3deg; border-style: double; }
+    .product h2 { color: #ff0088; font-size: 19px; text-shadow: 1px 1px #fff; }
+    .product p { color: #5200ff; font-size: 14px; font-weight: bold; }
+    button {
+      background: #ff00a8;
+      color: #00ff00;
+      border: 5px ridge #ffec00;
+      padding: 10px 14px;
+      font: bold 13px "Comic Sans MS", cursive;
+      cursor: pointer;
+    }
+    .discount {
+      margin: 25px 18px 10px auto;
+      width: min(340px, 75%);
+      padding: 10px;
+      color: #ff00a8;
+      background: #f8f5ff;
+      border: 2px dotted #eee;
+      font-size: 11px;
+      text-align: right;
+      opacity: .65;
+    }
+    .discount strong { display: block; font-size: 13px; color: #ff00a8; }
+    footer {
+      margin-top: 12px;
+      padding: 22px;
+      text-align: center;
+      color: #ff00ff;
+      background: #00f7ff;
+      border-top: 9px dashed #ff00a8;
+      font-size: 12px;
+    }
+    @media (max-width: 680px) {
+      .hero { grid-template-columns: 1fr; }
+      .products { grid-template-columns: 1fr; }
+      header { justify-content: center; }
+      nav { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">!!! MEGA SUPER HYPER SNEAKER ZONE — CLICK EVERYTHING NOW !!!</div>
+
+  <header>
+    <div class="logo">KICKRUSH!!!</div>
+    <nav aria-label="Main navigation">
+      <a href="#products">Cool Stuff</a>
+      <a href="#discount">Secrets</a>
+      <a href="#footer">Click Here</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>STEP INTO<br>AWESOME!!!</h1>
+        <p>THE MOST AMAZING SHOES IN THE UNIVERSE!!! NEW! HOT! WOW!</p>
+        <button onclick="alert('You clicked a button! But where will it take you?')">CLICK ME!!!</button>
+      </div>
+      <div class="hero-art" aria-label="Decorative sneaker illustration">
+        <div>
+          <div class="shoe" role="img" aria-label="sneaker">👟</div>
+          <small>HOT • FRESH • WILD • WOW</small>
+        </div>
+      </div>
+    </section>
+
+    <div class="random-badges" aria-label="Promotional labels">
+      <span>BEST EVER!!!</span><span>NEW!!!</span><span>SUPER DEAL</span><span>WOW WOW WOW</span>
+    </div>
+
+    <section class="products" id="products">
+      <article class="product">
+        <h2>THE FAST ONE</h2>
+        <p>Fast shoes for fast people! Maybe your fastest shoes ever!</p>
+        <button onclick="alert('Product selected!')">BUY NOW!!!</button>
+      </article>
+      <article class="product">
+        <h2>THE COOL ONE</h2>
+        <p>Cool shoes for cool people! Be cool! Stay cool!</p>
+        <button onclick="alert('Product selected!')">GET IT!!!</button>
+      </article>
+      <article class="product">
+        <h2>THE WOW ONE</h2>
+        <p>WOW shoes! You will say WOW when you see them!</p>
+        <button onclick="alert('Product selected!')">WOW BUY!!!</button>
+      </article>
+    </section>
+
+    <!-- Intentionally hidden at the bottom-right to illustrate poor visual hierarchy -->
+    <aside class="discount" id="discount">
+      <strong>WAIT… DID YOU NOTICE THIS?</strong>
+      50% OFF ALL SELECTED SNEAKERS!!! Hurry!!! Maybe click a menu item to find out!!!
+    </aside>
+  </main>
+
+  <footer id="footer">
+    WHY ARE YOU STILL HERE???<br>
+    KickRush!!! • Shoes • Stuff • Secrets • Click Here • WOW!!!
+  </footer>
+</body>
+</html>
